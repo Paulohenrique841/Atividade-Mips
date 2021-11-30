@@ -1,0 +1,41 @@
+# Exercícios
+# a = $s0, b = $s1, c = $s2, d = $s3, e = $s4, f = $s5.
+
+#A) a = b - c
+sub $s0,$s1,$s2
+#B) b = a + c
+add $s1,$s0,$s2
+#C)d = (a + b - c )
+add $s1,$s0,$s1
+sub $s3,$s1,$s2
+#D)f = (a + b) - d
+add $t1,$s0,$s1
+sub $s5,$t1,$s3
+#E)c = a - (b + d)
+add $t1,$s1,$s3
+sub $s2,$s0,$t1
+#F) e=(a -(b - c)
+sub $t1,$s1,$s2
+sub $s4,$s0,$t1
+#G)e=(a -(b - c)+ f)
+sub $t1,$s1,$s2
+sub $t2,$s0,$t1
+add $s4,$t2,$s5
+#H) f = e -(a - b)+(b - c)
+sub $t0,$s0,$s1
+sub $t1,$s1,$s2
+sub $t2,$s4,$t0
+add $s5,$t2,$t1
+#I) a = b[15] - c
+lw $t0,60($s1)
+sub $s0,$t0,$s2
+#J)b = a[15] + c[3]
+lw $t0,20($s0)
+lw $t1,12($s2)
+add $s1,$t0,$t1
+#K) c = b - a[21]
+lw $t0,84($s0)
+sub $s2,$s1,$t0
+#L)a[10] = b - c
+sub $t0,$s1,$s2
+sw $t0,40($s0)

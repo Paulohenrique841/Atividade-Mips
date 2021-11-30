@@ -1,0 +1,22 @@
+.data 
+a: .word  1, 2, 3, 4, 5
+b: .word
+.text
+#posição base dos vetores
+la $s0, a
+la $s1, b
+addi $t1, $t1, 16
+addi $t2, $t2, 0
+
+loop:
+  add $t3, $t1, $s0 
+  add $t5, $t2, $s1
+  #pega valor da posição da memoria 
+  lw $t4, 0($t3)
+  subi $t1, $t1, 4 
+  #pega valor da posição da memoria 
+  sw $t4, 0($t5)
+  addi $t2, $t2, 4 
+  #olha se $t1 não e menor que 0
+  slt $t6,$t1, $zero 
+  bne $t6, 1, loop 

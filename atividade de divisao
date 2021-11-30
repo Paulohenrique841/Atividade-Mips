@@ -1,0 +1,14 @@
+.text
+#numerador 
+addi $s0, $s0, 24 
+#denominador 
+addi $s1, $s1, 4
+addi $s4, $s4, 1
+add $t3, $t3, $s0
+loop:
+   #subtrai o valor
+   sub $t3, $t3, $s1
+   add $s2, $s2, 1 
+   #olha se  o valor e menor que 1
+   slt $s3,$t3, $s4 
+   bne $s3, 1, loop 

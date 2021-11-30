@@ -1,0 +1,12 @@
+.text
+addi $s0, $s0, 16
+addi $s1, $s1, 3
+addi $t1, $t1, 1
+
+loop:
+  #soma o valor 
+  add $t3, $t3, $s0
+  sub $s1, $s1, 1 
+  #olha se o valor e menor que 0
+  slt $s3,$s1, $t1
+  bne $s3, 1, loop 
